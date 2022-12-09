@@ -1,0 +1,17 @@
+.bgColorBlue{
+    background-color: #323246;
+}
+
+.navbar{
+    height: 75px;
+    
+}
+
+.navbar img{
+    height: 125px;  
+}
+
+.navText{
+    font-size: 150%;
+    padding: 50px;
+}

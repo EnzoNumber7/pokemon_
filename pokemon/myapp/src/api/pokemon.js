@@ -1,0 +1,56 @@
+
+export const getPoke = async () => {
+    const response = await fetch(
+        'http://localhost:4444/pokemon/list', {
+            method: 'GET', 
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type':'application/json'
+            }
+        }
+    );
+    const pokemons = await response.json()
+    return pokemons
+}
+
+
+export const getType = async () => {
+    const response = await fetch(
+        'http://localhost:4444/types/list', {
+            method: 'GET', 
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type':'application/json'
+            }
+        }
+    );
+    const types = await response.json()
+    return types
+}
+
+export const addPoke = async (name) => {
+    const response = await fetch(
+        'http://localhost:4444/pokedex/insert', {
+            method: 'POST', 
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({name})
+        }
+    );
+    return response.ok;
+}
+
+export const delPoke = async (name) => {
+    const response = await fetch(
+        'http://localhost:4444/pokemon/delete', {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({name}) },
+        );
+    return response.ok;
+}
