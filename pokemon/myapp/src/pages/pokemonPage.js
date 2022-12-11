@@ -2,6 +2,10 @@ import Menu from "../components/menu";
 import React, { useEffect, useState } from "react";
 import { getPoke,getType } from "../api/pokemon";
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 function PokePage(props){
@@ -24,25 +28,28 @@ function PokePage(props){
     },[]);
     return <div>
         <Menu />
-        <div>
-      {
-        pokemons.map((pokemon,key) =>{
-          return <div key={key} className="bloc-pokemon">
-            <Card className="cardColor" style={{ width: '10rem' }}>
-              <Card.Body>
-                <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
-                <Card.Img variant="top" src={pokemon.img} />
-                <Card.Text className="text-center">
-                  {type.map((type,key) =>{
-                    return  (type.type===pokemon.types[1])?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>+" ":(type.type===pokemon.types[0]?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>:"")})}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-        })}
-        
-        </div>
-    </div>;
+        <Container>
+          <Row>
+            {
+            pokemons.map((pokemon,key) =>{
+                  return <Col xs={3}>
+                   <div key={key} className="bloc-pokemon">
+                          <Card border="dark" className="cardColor cardSize">
+                            <Card.Body>
+                              <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
+                              <Card.Img variant="top" src={pokemon.img} />
+                              <Card.Text className="text-center">
+                                {type.map((type,key) =>{
+                                  return  (type.type===pokemon.types[1])?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>+" ":(type.type===pokemon.types[0]?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>:"")})}
+                              </Card.Text>
+                            </Card.Body>
+                          </Card>
+                  </div>
+              </Col>
+            })}
+          </Row>
+        </Container>
+        </div>;
 }
 
 export default PokePage;

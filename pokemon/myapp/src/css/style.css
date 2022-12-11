@@ -16,10 +16,15 @@
     padding: 50px;
 }
 
-.cardTitle{
-    font-size: 100%;
-}
-
 .cardColor{
     background-color: #CECED3;
+}
+
+.cardSize{
+    width: 10rem;
+    height: 15rem;
+}
+
+.cardTitle{
+    font-size: 100%;
 }
