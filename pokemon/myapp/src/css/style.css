@@ -15,3 +15,11 @@
     font-size: 150%;
     padding: 50px;
 }
+
+.cardTitle{
+    font-size: 100%;
+}
+
+.cardColor{
+    background-color: #CECED3;
+}

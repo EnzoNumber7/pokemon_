@@ -28,14 +28,13 @@ function PokePage(props){
       {
         pokemons.map((pokemon,key) =>{
           return <div key={key} className="bloc-pokemon">
-            <Card style={{ width: '10rem' }}>
+            <Card className="cardColor" style={{ width: '10rem' }}>
               <Card.Body>
-                <Card.Title>{pokemon.numero}:{pokemon.name}</Card.Title>
+                <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
                 <Card.Img variant="top" src={pokemon.img} />
-                <Card.Text>
+                <Card.Text className="text-center">
                   {type.map((type,key) =>{
-                    console.log(type.type,pokemon.types[0], (type.type===pokemon.types[0]))
-                    return  (type.type===pokemon.types[0])?<img src={type.img} style={{ width: '4.5rem' }}/>+" ":(type.type===pokemon.types[1]?<img src={type.img} style={{ width: '4.5rem' }}/>:"")})}
+                    return  (type.type===pokemon.types[1])?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>+" ":(type.type===pokemon.types[0]?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>:"")})}
                 </Card.Text>
               </Card.Body>
             </Card>

@@ -22,6 +22,7 @@ app.listen(port, function () {
 app.get("/pokemon/list", function (req, res) {
     //on se connecte à la DB MongoDB
     const dbConnect = dbo.getDb();
+    console.log(dbConnect)
     //premier test permettant de récupérer mes pokemons !
     dbConnect
       .collection("pokemons")
