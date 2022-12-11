@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -32,16 +33,17 @@ function PokePage(props){
           <Row>
             {
             pokemons.map((pokemon,key) =>{
-                  return <Col xs={3}>
+                  return <Col sm={2} md={3}>
                    <div key={key} className="bloc-pokemon">
-                          <Card border="dark" className="cardColor cardSize">
+                          <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
                               <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
-                              <Card.Img variant="top" src={pokemon.img} />
-                              <Card.Text className="text-center">
+                              <Card.Img className="pkmSize" variant="top" src={pokemon.img} />
+                              <Card.Text>
                                 {type.map((type,key) =>{
-                                  return  (type.type===pokemon.types[1])?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>+" ":(type.type===pokemon.types[0]?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>:"")})}
+                                  return  (type.type===pokemon.types[0])?type.type/*<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>*/+" ":(type.type===pokemon.types[1]?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>:"")})}
                               </Card.Text>
+                              <Button variant="light">Capture-le !</Button>
                             </Card.Body>
                           </Card>
                   </div>
