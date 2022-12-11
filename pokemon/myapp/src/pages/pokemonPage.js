@@ -27,7 +27,8 @@ function PokePage(props){
         .then(result => setType(result))
         .catch(error=>console.error("Erreur avec notre API :",error.message));
     },[]);
-    return <div>
+
+    return <div className="bgColorGrey">
         <Menu />
         <Container>
           <Row>
@@ -49,6 +50,14 @@ function PokePage(props){
                   </div>
               </Col>
             })}
+            <Col sm={2} md={3}>
+              <Card border="dark" className="cardColor cardSize text-center">
+                <Card.Text>
+                 <p>Ajouter un Pokemon</p>
+                 <Button variant="light">Capture-le !</Button>
+                </Card.Text>
+              </Card>
+            </Col>
           </Row>
         </Container>
         </div>;
