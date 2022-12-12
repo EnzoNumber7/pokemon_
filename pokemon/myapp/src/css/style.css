@@ -21,7 +21,10 @@
 }
 
 .cardColor{
-    background-color: #CECED3;
+    background-image: url(../img/pokeball.png);
+    background-repeat: no-repeat;
+    background-size: 175px;
+    background-color: rgba(176, 176, 181);
 }
 
 .cardSize{

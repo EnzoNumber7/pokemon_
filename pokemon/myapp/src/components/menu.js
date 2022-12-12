@@ -19,6 +19,7 @@ function Menu(){
                 <Nav.Link className="navText" href="/">Home</Nav.Link>
                 <Nav.Link className="navText" href="/Pokemon">Pokemon</Nav.Link>
                 <Nav.Link className="navText" href="/Pokedex">Pokedex</Nav.Link>
+                <Nav.Link className="navText" href="/Gestion">Gestion Pokemon</Nav.Link>
             </Nav>
             </Container>
         </Navbar>

@@ -7,6 +7,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import PageGestion from './pages/pageGestion';
 
 //App.js
 function App(props){
@@ -20,6 +21,9 @@ function App(props){
         </Route>
         <Route path="/Pokedex">
           <PokedexPage />
+        </Route>
+        <Route path="/Gestion">
+          <PageGestion />
         </Route>
       </Switch>
   </Router>

@@ -28,6 +28,7 @@ app.get("/pokemon/list", function (req, res) {
       .collection("pokemons")
       .find({}) // permet de filtrer les résultats
       /*.limit(50) // pourrait permettre de limiter le nombre de résultats */
+      .sort( {numero:1 } )
       .toArray(function (err, result) {
         if (err) {
           res.status(400).send("Error fetching pokemons!");
@@ -89,6 +90,7 @@ app.get("/pokedex/list", function (req, res) {
     .collection("pokedex")
     .find({}) // permet de filtrer les résultats
     /*.limit(50) // pourrait permettre de limiter le nombre de résultats */
+    .sort( {numero:1 } )
     .toArray(function (err, result) {
       if (err) {
         res.status(400).send("Error fetching pokemons!");

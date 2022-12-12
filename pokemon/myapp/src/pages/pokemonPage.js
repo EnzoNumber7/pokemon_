@@ -1,6 +1,6 @@
 import Menu from "../components/menu";
 import React, { useEffect, useState } from "react";
-import { getPoke,getType } from "../api/pokemon";
+import { getPoke,getType,getPokedex,addPoke } from "../api/pokemon";
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,9 +9,11 @@ import Button from 'react-bootstrap/Button';
 
 
 
+
 function PokePage(props){
     const [ pokemons, setPokemons ] = useState([]);
     const [type, setType] = useState([])
+    const [ pokedex, setPokedex ] = useState([]);
 
     //va s'executer seulement au lancement du composant (dep: [])
     useEffect(() => {
@@ -20,6 +22,12 @@ function PokePage(props){
     pokemonsFetched
         .then(result => setPokemons(result))
         .catch(error=>console.error("Erreur avec notre API :",error.message))
+      
+        // récupérer la liste des users seulement au chargement du composant ! 
+        const pokedexFetched = getPokedex();
+        pokedexFetched
+            .then(result => setPokedex(result))
+            .catch(error=>console.error("Erreur avec notre API :",error.message))
 
       // récupérer la liste des users seulement au chargement du composant ! 
     const typeFetched = getType();
@@ -41,23 +49,21 @@ function PokePage(props){
                               <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
                               <Card.Img className="pkmSize" variant="top" src={pokemon.img} />
                               <Card.Text>
-                                {type.map((type,key) =>{
-                                  return  (type.type===pokemon.types[0])?type.type/*<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>*/+" ":(type.type===pokemon.types[1]?<img src={type.img} style={{ width: '4.5rem' }} alt="type logo"/>:"")})}
+                              {
+                                pokemon.types.map((pokeType,key)=>{
+                                  const rightType = type.find(type => type.type===pokeType);
+                                  return (rightType?<img src={rightType.img} style={{ width: '4.5rem' }} alt="type logo"/>:null);
+                                })
+                              }
                               </Card.Text>
-                              <Button variant="light">Capture-le !</Button>
-                            </Card.Body>
+                              {
+                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={()=>addPoke(pokemon)}>Capturer !</Button>:"Pokemon déjà obtenu")  
+                              }
+                              </Card.Body>
                           </Card>
                   </div>
               </Col>
             })}
-            <Col sm={2} md={3}>
-              <Card border="dark" className="cardColor cardSize text-center">
-                <Card.Text>
-                 <p>Ajouter un Pokemon</p>
-                 <Button variant="light">Capture-le !</Button>
-                </Card.Text>
-              </Card>
-            </Col>
           </Row>
         </Container>
         </div>;

@@ -28,7 +28,7 @@ export const getType = async () => {
     return types
 }
 
-export const addPoke = async (name) => {
+export const addPoke = async (name,type,numero,image) => {
     const response = await fetch(
         'http://localhost:4444/pokedex/insert', {
             method: 'POST', 
@@ -36,7 +36,7 @@ export const addPoke = async (name) => {
                 'Accept': 'application/json', 
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify({name})
+            body: JSON.stringify(name,type,numero,image)
         }
     );
     return response.ok;
@@ -50,7 +50,21 @@ export const delPoke = async (name) => {
                 'Accept': 'application/json', 
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify({name}) },
+            body: JSON.stringify({...name}) },
         );
     return response.ok;
+}
+
+export const getPokedex = async () => {
+    const response = await fetch(
+        'http://localhost:4444/pokedex/list', {
+            method: 'GET', 
+            headers: {
+                'Accept': 'application/json', 
+                'Content-Type':'application/json'
+            }
+        }
+    );
+    const pokedex = await response.json()
+    return pokedex
 }
