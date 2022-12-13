@@ -7,7 +7,7 @@ import "../css/style.css"
 
 function Menu(){
     return  <>
-    <Navbar className='bgColorBlue navbar' variant="dark">
+    <Navbar className='bgColorBlue navbar' variant="dark" sticky="top">
         <Container>
         <Navbar.Brand href="/">
             <img

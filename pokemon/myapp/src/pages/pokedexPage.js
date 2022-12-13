@@ -41,11 +41,10 @@ function PokedexPage(props){
                               {
                                 pokedex.types.map((pokeType,key)=>{
                                   const rightType = type.find(type => type.type===pokeType);
-                                  return (rightType?<img src={rightType.img} style={{ width: '4.5rem' }} alt="type logo"/>:null);
+                                  return (rightType?<img src={rightType.img} style={{ width: '5.5rem' }} alt="type logo"/>:null);
                                 })
                               }
-                              </Card.Text>
-                              {/*<button onClick={()=>addPoke(pokemon)}>Modifier{pokemon.name}</button>*/}  
+                              </Card.Text>  
                             </Card.Body>
                           </Card>
                   </div>

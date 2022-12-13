@@ -1,18 +1,20 @@
 import Menu from "../components/menu";
 import React, { useEffect, useState } from "react";
-import { getPoke,getType,delPoke } from "../api/pokemon";
+import { getPoke,getType,delPoke,delPokedex } from "../api/pokemon";
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-
+import AddModal from "../components/AddModal";
+import UpdateModal from "../components/UpdateModal";
 
 
 
 function PageGestion(props){
     const [ pokemons, setPokemons ] = useState([]);
     const [type, setType] = useState([])
+
 
     //va s'executer seulement au lancement du composant (dep: [])
     useEffect(() => {
@@ -45,18 +47,29 @@ function PageGestion(props){
                               {
                                 pokemon.types.map((pokeType,key)=>{
                                   const rightType = type.find(type => type.type===pokeType);
-                                  return (rightType?<img src={rightType.img} style={{ width: '4.5rem' }} alt="type logo"/>:null);
+                                  return (rightType?<img src={rightType.img} style={{ width: '5.5rem' }} alt="type logo"/>:null);
                                 })
                               }
                               </Card.Text>
-                              {
-                              <Button variant="light" onClick={()=>delPoke(pokemon)}>Supprimer</Button>
-                              }
+                                
+                              <UpdateModal pokemon={pokemon} />
+                              
                               </Card.Body>
                           </Card>
+                          <Button size="sm" variant="light" onClick={()=>{delPoke(pokemon);delPokedex(pokemon)}}>Supprimer</Button>
                   </div>
               </Col>
             })}
+            <Col>
+              <Card border="dark" className="cardColor cardSize text-center">
+                <Card.Body>
+                  <Card.Title className="cardTitle text-center">Ajouter un Pokémon</Card.Title>
+                  <Card.Text>
+                    <AddModal />
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
           </Row>
         </Container>
         </div>;

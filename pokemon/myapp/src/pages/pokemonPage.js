@@ -1,6 +1,6 @@
 import Menu from "../components/menu";
 import React, { useEffect, useState } from "react";
-import { getPoke,getType,getPokedex,addPoke } from "../api/pokemon";
+import { getPoke,getType,getPokedex,addPokedex } from "../api/pokemon";
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -52,12 +52,12 @@ function PokePage(props){
                               {
                                 pokemon.types.map((pokeType,key)=>{
                                   const rightType = type.find(type => type.type===pokeType);
-                                  return (rightType?<img src={rightType.img} style={{ width: '4.5rem' }} alt="type logo"/>:null);
+                                  return (rightType?<img src={rightType.img} style={{ width: '5.5rem' }} alt="type logo"/>:null);
                                 })
                               }
                               </Card.Text>
                               {
-                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={()=>addPoke(pokemon)}>Capturer !</Button>:"Pokemon déjà obtenu")  
+                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={()=>addPokedex(pokemon)}>Capturer !</Button>:"Pokemon déjà obtenu")  
                               }
                               </Card.Body>
                           </Card>
