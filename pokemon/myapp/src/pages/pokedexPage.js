@@ -27,6 +27,7 @@ function PokedexPage(props){
     },[]);
     return <div className="bgColorGrey">
         <Menu />
+        <div className="bgImage">
         <Container>
           <Row>
             {
@@ -35,7 +36,14 @@ function PokedexPage(props){
                    <div key={key} className="bloc-pokemon">
                           <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
-                              <Card.Title className="cardTitle text-center ">{pokedex.numero}:{pokedex.name}</Card.Title>
+                              <Card.Title className="cardTitle text-center zero-marg ">
+                                <Container>
+                                  <Row>
+                                    <Col className="zero-padd zero-marg col-3"><p className="text-center">{pokedex.numero}</p> </Col>
+                                    <Col className="zero-padd zero-marg col-9"><p className="text-center">{pokedex.name}</p></Col>
+                                  </Row>
+                                </Container>
+                              </Card.Title>
                               <Card.Img className="pkmSize" variant="top" src={pokedex.img} />
                               <Card.Text>
                               {
@@ -52,7 +60,7 @@ function PokedexPage(props){
             })}
           </Row>
         </Container>
-        <img src="../img/pokemonLogo.png"/>
+        </div>
     </div>;
 }
 

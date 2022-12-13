@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {useForm} from 'react-hook-form'
 import {addPoke,getType} from '../api/pokemon';
+import plus from '../img/plus.png';
 
 function AddModal() {
     const [show, setShow] = useState(false);
@@ -28,7 +29,7 @@ function AddModal() {
     const handleClose = () => setShow(false);
     return (
         <>
-          <Button variant="light" size="sm" onClick={handleShow}>Ajouter</Button>
+          <Button className='add-btn' variant='light' size="sm" onClick={handleShow}><img src={plus}/></Button>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Ajouter un nouveau pokemon</Modal.Title>

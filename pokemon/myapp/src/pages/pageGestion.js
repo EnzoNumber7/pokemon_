@@ -32,8 +32,9 @@ function PageGestion(props){
         .catch(error=>console.error("Erreur avec notre API :",error.message));
     },[]);
 
-    return <div className="bgColorGrey">
+    return <div>
         <Menu />
+        <div className="bgImage">
         <Container>
           <Row>
             {
@@ -42,7 +43,14 @@ function PageGestion(props){
                    <div key={key} className="bloc-pokemon">
                           <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
-                              <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
+                              <Card.Title className="cardTitle text-center zero-marg">
+                                <Container>
+                                  <Row>
+                                    <Col className="zero-padd zero-marg col-3"><p className="text-center">{pokemon.numero}</p> </Col>
+                                    <Col className="zero-padd zero-marg col-9"><p className="text-center">{pokemon.name}</p></Col>
+                                  </Row>
+                                </Container>
+                              </Card.Title>
                               <Card.Img className="pkmSize" variant="top" src={pokemon.img} />
                               <Card.Text>
                               {
@@ -64,9 +72,9 @@ function PageGestion(props){
               </Col>
             })}
             <Col>
-              <Card border="dark" className="cardColor cardSize text-center">
+              <Card border="dark" className="add-CardColor cardSize text-center">
                 <Card.Body>
-                  <Card.Title className="cardTitle text-center">Ajouter un Pokémon</Card.Title>
+                  <Card.Title className="addCardTitle text-center">Ajouter un Pokémon</Card.Title>
                   <Card.Text>
                     <AddModal />
                   </Card.Text>
@@ -75,6 +83,7 @@ function PageGestion(props){
             </Col>
           </Row>
         </Container>
+        </div>
         </div>;
 }
 

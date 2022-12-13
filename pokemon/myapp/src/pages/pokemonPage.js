@@ -39,6 +39,7 @@ function PokePage(props){
 
     return <div className="bgColorGrey">
         <Menu />
+        <div className="bgImage">
         <Container>
           <Row>
             {
@@ -47,8 +48,25 @@ function PokePage(props){
                    <div key={key} className="bloc-pokemon">
                           <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
-                              <Card.Title className="cardTitle text-center">
-                                  {(pokedex.find(pokedex => pokemon.name===pokedex.name)?<p className="vertical-center">{pokemon.numero+": "+pokemon.name+" "}<img src={pokeball}/></p>:pokemon.numero+": "+pokemon.name+" ")}
+                              <Card.Title className="cardTitle text-center zero-marg">
+                                      {(pokedex.find(pokedex => pokemon.name===pokedex.name)?
+                                      (
+                                      <Container>
+                                        <Row>
+                                          <Col className="zero-padd zero-marg col-3"><p className="text-center">{pokemon.numero}</p></Col>
+                                          <Col className="zero-padd zero-marg col-9"><p className="text-center">{pokemon.name} <img src={pokeball}/></p></Col>
+                                        </Row>
+                                      </Container>  
+                                        ):
+                                      (
+                                      <Container>
+                                        <Row>
+                                          <Col className="zero-padd zero-marg col-3"><p className="text-center">{pokemon.numero}</p></Col>
+                                          <Col className="zero-padd zero-marg col-9"><p className="text-center">{pokemon.name}</p></Col>
+                                        </Row>
+                                      </Container> 
+                                      ))}
+
                               </Card.Title>
                               <Card.Img className="pkmSize" variant="top" src={pokemon.img} />
                               <Card.Text>
@@ -69,6 +87,7 @@ function PokePage(props){
             })}
           </Row>
         </Container>
+        </div>
         </div>;
 }
 
