@@ -28,7 +28,7 @@ function UpdateModal(props) {
   
     return (
       <>
-        <Button variant="light" size="sm" onClick={handleShow}>Modifier</Button>
+        <Button className="btn-size" variant="light" size="sm" onClick={handleShow}>Modifier</Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Modifier le Pokémon</Modal.Title>
