@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import pokeball from '../img/pokeball.png';
 
 
 
@@ -46,7 +47,9 @@ function PokePage(props){
                    <div key={key} className="bloc-pokemon">
                           <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
-                              <Card.Title className="cardTitle text-center">{pokemon.numero}:{pokemon.name}</Card.Title>
+                              <Card.Title className="cardTitle text-center">
+                                  {(pokedex.find(pokedex => pokemon.name===pokedex.name)?<p className="vertical-center">{pokemon.numero+": "+pokemon.name+" "}<img src={pokeball}/></p>:pokemon.numero+": "+pokemon.name+" ")}
+                              </Card.Title>
                               <Card.Img className="pkmSize" variant="top" src={pokemon.img} />
                               <Card.Text>
                               {
@@ -57,7 +60,7 @@ function PokePage(props){
                               }
                               </Card.Text>
                               {
-                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={()=>addPokedex(pokemon)}>Capturer !</Button>:"Pokemon déjà obtenu")  
+                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={()=>addPokedex(pokemon)}>Capturer !</Button>:null)  
                               }
                               </Card.Body>
                           </Card>
