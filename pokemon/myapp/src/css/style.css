@@ -20,27 +20,42 @@
 }
 
 .cardColor{
-    background-image: url(../img/pokeball.png);
-    background-repeat: no-repeat;
-    background-size: 175px;
-    background-color: rgba(176, 176, 181);
+    /*background-image: sword and shield back url(../img/card-back.png); 
+    background-repeat: no-repeat; */
+    background-color: #CECED3;
 }
 
 .cardSize{
-    width: 10rem;
-    height: 17rem;
+    width: 11rem;
+    height: 16.5rem;
     margin-top: 50px;
 }
 
 .cardTitle{
-    font-size: 100%;
+    font-size: 90%;
     color: white;
     background-color: rgba(0, 0 , 0, 0.5);
     border-radius: 5px;
     padding: 5px;
 }
 
+.vertical-center{
+    margin: 3px;
+}
+
+.zero-padd{
+    padding: 0px;
+}
+
+.btn-size{
+    font-size: 70%;
+    padding: 2px;
+    margin: 0px;
+    font-size: 90%;
+}
+
 .pkmSize{
     height: 100px;
     width: auto;
 }
+
