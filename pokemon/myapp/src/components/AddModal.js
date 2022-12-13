@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import {useForm} from 'react-hook-form'
 import {addPoke,getType} from '../api/pokemon';
 import plus from '../img/plus.png';
+import Form from 'react-bootstrap/Form';
 
 function AddModal() {
     const [show, setShow] = useState(false);
@@ -35,22 +36,33 @@ function AddModal() {
               <Modal.Title>Ajouter un nouveau pokemon</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("numero")} placeholder="Numero du pokemon" />
-                    <input {...register("name")} placeholder="Nom du Pokémon :" />
-                    <select {...register("types", { required: true })}>
+
+
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Numero du pokemon</Form.Label>
+                    <Form.Control {...register("numero")} placeholder="Ex: 129" />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Nom du pokemon</Form.Label>
+                    <Form.Control {...register("name")} placeholder="Ex: Magicarpe" />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" >
+                    <Form.Select {...register("types", { required: true })}>
                       {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
                         <option value={type.type}>{type.type}</option>
-                    </select>
-                    <input {...register("img")} placeholder="Lien de l'image :" />
-                    <Button type="submit" variant="primary">Save Changes</Button>
-                </form>
+                    </Form.Select>
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Liens image</Form.Label>
+                    <Form.Control {...register("img")} placeholder="Liens image" />
+                  </Form.Group>
+                  <Button variant="primary" type="submit" onClick={handleClose}>Ajouter</Button>
+              </Form>
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
           </Modal>
         </>
       );
