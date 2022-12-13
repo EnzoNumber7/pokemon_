@@ -11,6 +11,7 @@ import UpdateModal from "../components/UpdateModal";
 
 
 
+
 function PageGestion(props){
     const [ pokemons, setPokemons ] = useState([]);
     const [type, setType] = useState([])
@@ -37,7 +38,7 @@ function PageGestion(props){
           <Row>
             {
             pokemons.map((pokemon,key) =>{
-                  return <Col sm={2} md={3}>
+                  return <Col sm={2} md={3} className="text-center" >
                    <div key={key} className="bloc-pokemon">
                           <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
@@ -51,12 +52,14 @@ function PageGestion(props){
                                 })
                               }
                               </Card.Text>
-                                
-                              <UpdateModal pokemon={pokemon} />
-                              
+                              <Container>
+                                <Row>
+                                  <Col className="zero-padd"><Button className="btn-size" size="sm" variant="light" onClick={()=>{delPoke(pokemon);delPokedex(pokemon)}}>Supprimer</Button></Col>
+                                  <Col className="zero-padd"><UpdateModal pokemon={pokemon} /></Col>
+                                </Row>
+                              </Container>
                               </Card.Body>
                           </Card>
-                          <Button size="sm" variant="light" onClick={()=>{delPoke(pokemon);delPokedex(pokemon)}}>Supprimer</Button>
                   </div>
               </Col>
             })}
