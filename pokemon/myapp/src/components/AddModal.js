@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {useForm} from 'react-hook-form'
-import {addPoke} from '../api/pokemon';
+import {addPoke,getType} from '../api/pokemon';
 
 function AddModal() {
     const [show, setShow] = useState(false);
@@ -14,6 +14,15 @@ function AddModal() {
       //On peut transformer les données en JSON pour les envoyer dans notre appel
       //JSON.stringify(data);
     }
+    const [type, setType] = useState([]);
+
+    useEffect(() => {
+      // récupérer la liste des users seulement au chargement du composant ! 
+      const typeFetched = getType();
+        typeFetched
+          .then(result => setType(result))
+          .catch(error=>console.error("Erreur avec notre API :",error.message));
+    },[]);
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -29,8 +38,8 @@ function AddModal() {
                     <input {...register("numero")} placeholder="Numero du pokemon" />
                     <input {...register("name")} placeholder="Nom du Pokémon :" />
                     <select {...register("types", { required: true })}>
-                        <option value="Eau">Eau</option>
-                        <option value="Plante">Plante</option>
+                      {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
+                        <option value={type.type}>{type.type}</option>
                     </select>
                     <input {...register("img")} placeholder="Lien de l'image :" />
                     <Button type="submit" variant="primary">Save Changes</Button>
