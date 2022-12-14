@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import AddModal from "../components/AddModal";
 import UpdateModal from "../components/UpdateModal";
+import Footer from "../components/footer";
 
 
 
@@ -92,6 +93,7 @@ function PageGestion(props){
             </Row>
           </Container>
         </div>
+        <Footer />
       </div>;
 }
 
