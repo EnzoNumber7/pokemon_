@@ -15,10 +15,10 @@ function Menu(){
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className='me-auto'>
-                <Nav.Link className="navText" href="/">Home</Nav.Link>
-                <Nav.Link className="navText" href="/Pokemon">Pokemon</Nav.Link>
-                <Nav.Link className="navText" href="/Pokedex">Pokedex</Nav.Link>
-                <Nav.Link className="navText" href="/Gestion">Gestion Pokemon</Nav.Link>
+                <Nav.Link className="navText navbar-size" href="/">Home</Nav.Link>
+                <Nav.Link className="navText navbar-size" href="/Pokemon">Pokemon</Nav.Link>
+                <Nav.Link className="navText navbar-size" href="/Pokedex">Pokedex</Nav.Link>
+                <Nav.Link className="navText navbar-size" href="/Gestion">Gestion Pokemon</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
