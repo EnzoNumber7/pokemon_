@@ -45,8 +45,8 @@ function PageGestion(props){
               {
               pokemons.map((pokemon,key) =>{
                     return <Col sm={2} md={3} className="text-center" >
-                    <div key={key} className="bloc-pokemon">
-                            <Card border="dark" className="cardColor cardSize text-center">
+                    <div key={key} className="bloc-pokemon item-center offset-2">
+                            <Card border="dark" className="cardColor cardSize text-center ">
                               <Card.Body>
                                 <Card.Title className="cardTitle text-center zero-marg">
                                   <Container>

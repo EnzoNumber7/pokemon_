@@ -8,6 +8,11 @@
 
 .bgImage{
     background-image: url(../img/background.png);
+    background-size: 100%;
+}
+
+.bgFooterImage{
+    background-image: url(../img/backgroundFooter.png);
 }
 
 .navbar{
@@ -74,7 +79,12 @@ h2 span{
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #000000;
+}
+
+.home-CardColor{
+    background-image:url(../img/BackgroundHomeCard.png);
+    background-size: cover; 
+    background-repeat: no-repeat;
 }
 
 .add-CardColor{
@@ -82,7 +92,6 @@ h2 span{
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #000000;
 }
 
 .cardSize{
@@ -106,13 +115,20 @@ h2 span{
     padding: 5px;
 }
 
+.card-image{
+    width:35%;
+    min-width: 150px;
+    align-items: center;
+    padding: 5px;
+}
+
 .margin-left{
     margin-left: 20px;
     margin-bottom: 0px;
 }
 
 .vertical-center{
-    margin: 3px;
+    margin-top: 40px;
 }
 
 .zero-marg{
@@ -149,19 +165,23 @@ h2 span{
 }
 
 .footer-title{
-    font-size: 200%;
+    font-size: 175%;
     margin-top: 15px;
 }
 
 .footer-logo{
     margin-top: 10px;
-    width: 30%;
+    width: 25%;
 }
 
 .footer-text{
-    font-size: 125%;
+    font-size: 100%;
 }
 
 .margin-top{
     margin-top: 70px;
+}
+
+.margin-bottom{
+    margin-bottom: 70px;
 }
