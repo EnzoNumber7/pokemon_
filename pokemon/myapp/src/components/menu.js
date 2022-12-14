@@ -2,8 +2,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../img/pokemonLogo.png';
-
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import "../css/style.css"
+
 
 function Menu(){
     return  <>
@@ -22,7 +23,8 @@ function Menu(){
             </Nav>
           </Navbar.Collapse>
         </Container>
-        </Navbar>
+      </Navbar>
+    
     </>
 }
 
