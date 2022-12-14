@@ -153,10 +153,15 @@ h2 span{
     margin-top: 15px;
 }
 
+.footer-logo{
+    margin-top: 10px;
+    width: 30%;
+}
+
 .footer-text{
     font-size: 125%;
 }
 
 .margin-top{
-    margin-top: 80px;
+    margin-top: 70px;
 }

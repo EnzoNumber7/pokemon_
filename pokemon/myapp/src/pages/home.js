@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/esm/Button";
 import Footer from "../components/footer";
+import logo from "../img/pokemonLogoHome.png"
 
 function Home(props){
     return <div>
@@ -15,10 +16,11 @@ function Home(props){
                     <Col>
                         <Card>
                             <Card.Body>
-                                <Card.Title>Liste des Pokémons</Card.Title>
+                                <Card.Title className="text-centers">Liste des Pokémons</Card.Title>
                                 <Card.Text>
                                     Jetez un oeil à la liste des Pokémons disponibles ici-même et "Attrapez les tous !" :
                                 </Card.Text>
+                                <Card.Img src={logo} alt="logo pokemon" />
                                 <Button href="Pokemon">Aller sur la liste des Pokémons</Button>
                             </Card.Body>
                         </Card>
@@ -26,7 +28,7 @@ function Home(props){
                     <Col>
                         <Card>
                             <Card.Body>
-                                <Card.Title>Liste de vos Pokémons</Card.Title>
+                                <Card.Title className="text-centers">Liste de vos Pokémons</Card.Title>
                                 <Card.Text>
                                     Jetez un oeil à votre Pokedex  :
                                 </Card.Text>

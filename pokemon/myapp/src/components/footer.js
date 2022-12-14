@@ -8,13 +8,13 @@ function Footer(){
         <Container>
             <Row>
                 <Col xs={12} lg={5} className=' text-center'>
-                    <img src={logo} />
+                    <img className='footer-logo ' src={logo}  alt="logo pokemon"/>
                     <p className="footer-title">Nous Contacter</p>
                     <p className="footer-text">Email: ephilippe@gaming.tech / vfovet@gaming.tech</p>
                 </Col>
                 <Col xs={12} lg={5} className='text-center'>
                     <p className="footer-title margin-top">Pour plus d'information sur Pokemon</p>
-                    <a className="footer-text" href="https://www.pokemon.com/fr">Le site Web officiel Pokémon</a>
+                    <a className="footer-text" href="https://www.pokemon.com/fr" target="blank">Le site Web officiel Pokémon</a>
                 </Col>
             </Row>
         </Container>
