@@ -26,7 +26,7 @@ function UpdateModal(props) {
     const [type, setType] = useState([]);
 
     useEffect(() => {
-      // récupérer la liste des users seulement au chargement du composant ! 
+      
       const typeFetched = getType();
         typeFetched
           .then(result => setType(result))
@@ -81,5 +81,4 @@ function UpdateModal(props) {
 
 export default UpdateModal;
 
-//<Button className='add-btn' variant='light' size="sm" onClick={handleShow}><img src={plus}/></Button>
           
