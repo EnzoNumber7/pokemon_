@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import pokeball from '../img/pokeball.png';
+//import Filter from "../components/typeFilterPokemon";
 
 
 
@@ -18,6 +19,7 @@ function PokePage(props){
     const [ pokemons, setPokemons ] = useState([]);
     const [type, setType] = useState([])
     const [ pokedex, setPokedex ] = useState([]);
+    
 
     //va s'executer seulement au lancement du composant (dep: [])
     useEffect(() => {
@@ -43,6 +45,9 @@ function PokePage(props){
     return <div className="bgColorGrey">
         <Menu />
         <div className="bgImage">
+        <h1><span>Pokemon</span></h1>
+        <h2><span>Retrouvez ici la liste des pokemon à capturer !</span></h2>
+        {/*<Filter pokemons={pokemons} />*/}
         <Container>
           <Row>
             {
