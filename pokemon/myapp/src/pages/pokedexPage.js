@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Footer from "../components/footer";
 
 
 function PokedexPage(props){
@@ -33,13 +34,16 @@ function PokedexPage(props){
         <Menu />
         <div className="bgImage">
         <h1><span>Pokedex</span></h1>
-        <h2><span>Retrouvez ici les Pokemon que vous avez capturé !</span></h2>
+        
+        <h2 className="lg-h2 d-none d-sm-block"><span>Retrouvez ici les Pokemon que vous avez capturé !</span></h2>
+        <h2 className="sm-h2 d-sm-none"><span>Retrouvez ici les Pokemon que vous avez capturé !</span></h2>
+
         <Container>
           <Row>
             {
             pokedex.map((pokedex,key) =>{
                   return <Col sm={2} md={3}>
-                   <div key={key} className="bloc-pokemon">
+                   <div key={key} className="bloc-pokemon item-center offset-2">
                           <Card border="dark" className="cardColor cardSize text-center">
                             <Card.Body>
                               <Card.Title className="cardTitle text-center zero-marg ">
@@ -75,6 +79,7 @@ function PokedexPage(props){
           </Row>
         </Container>
         </div>
+        <Footer />
     </div>;
 }
 
