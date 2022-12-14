@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import pokeball from '../img/pokeball.png';
-//import Filter from "../components/typeFilterPokemon";
+import Footer from "../components/footer";
 
 
 
@@ -46,15 +46,18 @@ function PokePage(props){
         <Menu />
         <div className="bgImage">
         <h1><span>Pokemon</span></h1>
-        <h2><span>Retrouvez ici la liste des pokemon à capturer !</span></h2>
+
+        <h2 className="lg-h2 d-none d-sm-block"><span>Retrouvez ici la liste des pokemon à capturer !</span></h2>
+        <h2 className="sm-h2 d-sm-none"><span>Retrouvez ici la liste des pokemon à capturer !</span></h2>
+        
         {/*<Filter pokemons={pokemons} />*/}
         <Container>
           <Row>
             {
             pokemons.map((pokemon,key) =>{
                   return <Col sm={2} md={3}>
-                   <div key={key} className="bloc-pokemon">
-                          <Card border="dark" className="cardColor cardSize text-center">
+                   <div key={key} className="bloc-pokemon item-center offset-2">
+                          <Card border="dark" className="cardColor cardSize">
                             <Card.Body>
                               <Card.Title className="cardTitle text-center zero-marg">
                                       {(pokedex.find(pokedex => pokemon.name===pokedex.name)?
@@ -100,6 +103,7 @@ function PokePage(props){
           </Row>
         </Container>
         </div>
+        <Footer />
         </div>;
 }
 
