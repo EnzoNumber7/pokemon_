@@ -1,25 +1,29 @@
 import Menu from "../components/menu";
 import React, { useEffect, useState } from "react";
-import { getPokedex,getType } from "../api/pokemon";
+import { getPokedex,getType,delPokedex } from "../api/pokemon";
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 
 function PokedexPage(props){
     const [ pokedex, setPokedex ] = useState([]);
     const [type, setType] = useState([])
+    function refreshPage() {
+      window.location.reload(false);
+    }
 
     //va s'executer seulement au lancement du composant (dep: [])
     useEffect(() => {
-    // récupérer la liste des users seulement au chargement du composant ! 
+    
     const pokedexFetched = getPokedex();
     pokedexFetched
         .then(result => setPokedex(result))
         .catch(error=>console.error("Erreur avec notre API :",error.message))
 
-      // récupérer la liste des users seulement au chargement du composant ! 
+      
     const typeFetched = getType();
     typeFetched
         .then(result => setType(result))
@@ -28,6 +32,8 @@ function PokedexPage(props){
     return <div className="bgColorGrey">
         <Menu />
         <div className="bgImage">
+        <h1><span>Pokedex</span></h1>
+        <h2><span>Retrouvez ici les Pokemon que vous avez capturé !</span></h2>
         <Container>
           <Row>
             {
@@ -52,7 +58,15 @@ function PokedexPage(props){
                                   return (rightType?<img src={rightType.img} style={{ width: '5.5rem' }} alt="type logo"/>:null);
                                 })
                               }
-                              </Card.Text>  
+                              </Card.Text>
+                              <Container>
+                                  <Row>
+                                    <Col className="zero-padd"><Button className="btn-size" size="sm" variant="light" onClick={async()=>{
+                                      await delPokedex(pokedex)
+                                      refreshPage()
+                                      }}>Relâcher</Button></Col>
+                                  </Row>
+                                </Container>  
                             </Card.Body>
                           </Card>
                   </div>
