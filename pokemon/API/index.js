@@ -65,7 +65,7 @@ app.post('/pokemon/update', jsonParser, (req, res) => {
   dbConnect
       .collection("pokemons")
       //on code ensuite l'insertion dans mongoDB, lisez la doc hehe !!
-      .updateOne({name:body.name}, {$set: {name: body.newName}}, {$set: {types: body.newTypes}}, {$set: {numero: body.newNumero}});
+      .updateOne({numero:body.numero}, {$set:{...body}});
   res.json(body);
 });
 

@@ -84,7 +84,7 @@ export const delPokedex = async (name) => {
 
 export const updatePoke = async (name,type,numero,image) => {
     const response = await fetch(
-        'http://localhost:4444//pokemon/update', {
+        'http://localhost:4444/pokemon/update', {
             method: 'POST', 
             headers: {
                 'Accept': 'application/json', 

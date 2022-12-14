@@ -10,7 +10,9 @@ function AddModal() {
     const [show, setShow] = useState(false);
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        data.types=Array(data.types)
+        data.types=[data.type1,data.type2]
+        delete data.type1
+        delete data.type2
         addPoke(data)
       /*Coder ici pour préparer l'appel réseau POST avec FETCH !*/
       //On peut transformer les données en JSON pour les envoyer dans notre appel
@@ -30,7 +32,7 @@ function AddModal() {
     const handleClose = () => setShow(false);
     return (
         <>
-          <Button className='add-btn' variant='light' size="sm" onClick={handleShow}><img src={plus}/></Button>
+          <Button className='add-btn' variant='light' size="sm" onClick={handleShow}><img src={plus} alt="plus"/></Button>
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Ajouter un nouveau pokemon</Modal.Title>
@@ -50,7 +52,12 @@ function AddModal() {
                   </Form.Group>
 
                   <Form.Group className="mb-3" >
-                    <Form.Select {...register("types", { required: true })}>
+                    <Form.Select {...register("type1", { required: true })}>
+                      {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
+                        <option value={type.type}>{type.type}</option>
+                    </Form.Select>
+                    <Form.Select {...register("type2", { required: true })}>
+                      <option value={null}>None</option>
                       {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
                         <option value={type.type}>{type.type}</option>
                     </Form.Select>

@@ -7,21 +7,21 @@ import "../css/style.css"
 
 function Menu(){
     return  <>
-    <Navbar className='bgColorBlue navbar' variant="dark" sticky="top">
+    <Navbar collapseOnSelect expand="lg" className='bgColorBlue navbar' variant="dark" sticky="top">
         <Container>
         <Navbar.Brand href="/">
-            <img
-              src={logo}
-              alt='logo'
-            />
+            <img src={logo}alt='logo'/>
           </Navbar.Brand>
-            <Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className='me-auto'>
                 <Nav.Link className="navText" href="/">Home</Nav.Link>
                 <Nav.Link className="navText" href="/Pokemon">Pokemon</Nav.Link>
                 <Nav.Link className="navText" href="/Pokedex">Pokedex</Nav.Link>
                 <Nav.Link className="navText" href="/Gestion">Gestion Pokemon</Nav.Link>
             </Nav>
-            </Container>
+          </Navbar.Collapse>
+        </Container>
         </Navbar>
     </>
 }

@@ -2,18 +2,26 @@ import React, { useState,useEffect } from 'react';
 import {getType,updatePoke} from '../api/pokemon';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import {useForm} from 'react-hook-form'
 
 
 function UpdateModal(props) {
+    const secondType= props.pokemon.types.length===2?props.pokemon.types[1]:null;
     const { register, handleSubmit } = useForm();
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
-    const onSubmit = (data) => {
-      console.log(data);
-      
-      updatePoke(data);
+    function refreshPage() {
+      window.location.reload(false);
+    }
+
+    const onSubmit = async (data) => {  
+      data.types=[data.type1,data.type2]
+      delete data.type1
+      delete data.type2
+      await updatePoke(data);
+      refreshPage()
     }
     const [type, setType] = useState([]);
 
@@ -30,30 +38,48 @@ function UpdateModal(props) {
       <>
         <Button className="btn-size" variant="light" size="sm" onClick={handleShow}>Modifier</Button>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modifier le Pokémon</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                  <input {...register("name")} defaultValue={props.pokemon.name} placeholder="Nom du Pokémon :" />
-                  <input {...register("numero")} defaultValue={props.pokemon.numero} placeholder="Numéro du pokémon dans le pokédex :" />
-                  <select defaultValue={props.pokemon.types} multiple {...register("types[]", { required: true })}>
-                    {
-                      type.map(typ=><option value={typ.type}>{typ.type}</option>)
-                    }
-                  </select>
-                  <input {...register("img")} defaultValue={props.pokemon.img} placeholder="Lien de l'image :" />
-                  <Button type="submit" variant="primary">Save Changes</Button>
-              </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+            <Modal.Header closeButton>
+              <Modal.Title>Modifier le Pokémon</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Numéro du pokemon</Form.Label>
+                    <Form.Control defaultValue={props.pokemon.numero} {...register("numero")} />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Nom du Pokémon</Form.Label>
+                    <Form.Control defaultValue={props.pokemon.name} {...register("name")}  />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" >
+                    Changer le(s) type(s) du Pokémon
+                    <Form.Select defaultValue={props.pokemon.types[0]} {...register("type1", { required: true })}>
+                      {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
+                        <option value={type.type}>{type.type}</option>
+                    </Form.Select>
+                    <Form.Select defaultValue={secondType} {...register("type2", { required: true })}>
+                    <option value={null}>Pas de second type</option>
+                      {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
+                        <option value={type.type}>{type.type}</option>
+                    </Form.Select>
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Lien de l'image</Form.Label>
+                    <Form.Control defaultValue={props.pokemon.img} {...register("img")} />
+                  </Form.Group>
+                  <Button variant="primary" type="submit" >Modiifer</Button>
+              </Form>
+            </Modal.Body>
+          </Modal>
       </>
     );
     }
 
 export default UpdateModal;
+
+//<Button className='add-btn' variant='light' size="sm" onClick={handleShow}><img src={plus}/></Button>
+          
