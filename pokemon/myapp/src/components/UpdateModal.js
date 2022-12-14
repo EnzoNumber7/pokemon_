@@ -55,7 +55,7 @@ function UpdateModal(props) {
                   </Form.Group>
 
                   <Form.Group className="mb-3" >
-                    Changer le(s) type(s) du Pokémon
+                    <Form.Label>Changer le(s) type(s) du Pokémon</Form.Label>
                     <Form.Select defaultValue={props.pokemon.types[0]} {...register("type1", { required: true })}>
                       {type.map(typ=><option value={typ.type}>{typ.type}</option>)}
                         <option value={type.type}>{type.type}</option>
@@ -71,7 +71,7 @@ function UpdateModal(props) {
                     <Form.Label>Lien de l'image</Form.Label>
                     <Form.Control defaultValue={props.pokemon.img} {...register("img")} />
                   </Form.Group>
-                  <Button variant="primary" type="submit" >Modiifer</Button>
+                  <Button variant="primary" type="submit" >Modifer</Button>
               </Form>
             </Modal.Body>
           </Modal>

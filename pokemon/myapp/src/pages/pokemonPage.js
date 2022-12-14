@@ -12,6 +12,9 @@ import pokeball from '../img/pokeball.png';
 
 
 function PokePage(props){
+    function refreshPage() {
+      window.location.reload(false);
+    }
     const [ pokemons, setPokemons ] = useState([]);
     const [type, setType] = useState([])
     const [ pokedex, setPokedex ] = useState([]);
@@ -54,7 +57,7 @@ function PokePage(props){
                                       <Container>
                                         <Row>
                                           <Col className="zero-padd zero-marg col-3"><p className="text-center">{pokemon.numero}</p></Col>
-                                          <Col className="zero-padd zero-marg col-9"><p className="text-center">{pokemon.name} <img src={pokeball}/></p></Col>
+                                          <Col className="zero-padd zero-marg col-9"><p className="text-center">{pokemon.name} <img src={pokeball} alt="pokeball icon"/></p></Col>
                                         </Row>
                                       </Container>  
                                         ):
@@ -78,7 +81,11 @@ function PokePage(props){
                               }
                               </Card.Text>
                               {
-                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={()=>addPokedex(pokemon)}>Capturer !</Button>:null)  
+                              (!pokedex.find(pokedex => pokemon.name===pokedex.name)?<Button variant='light' onClick={async()=>{
+                                await addPokedex(pokemon)
+                                refreshPage()
+                              }}
+                                >Capturer !</Button>:null)  
                               }
                               </Card.Body>
                           </Card>

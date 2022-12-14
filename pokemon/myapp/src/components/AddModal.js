@@ -7,16 +7,17 @@ import plus from '../img/plus.png';
 import Form from 'react-bootstrap/Form';
 
 function AddModal() {
+    function refreshPage() {
+      window.location.reload(false);
+    }
     const [show, setShow] = useState(false);
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         data.types=[data.type1,data.type2]
         delete data.type1
         delete data.type2
-        addPoke(data)
-      /*Coder ici pour préparer l'appel réseau POST avec FETCH !*/
-      //On peut transformer les données en JSON pour les envoyer dans notre appel
-      //JSON.stringify(data);
+        await addPoke(data);
+        refreshPage()
     }
     const [type, setType] = useState([]);
 
