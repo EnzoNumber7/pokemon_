@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/esm/Button";
+import Footer from "../components/footer";
 
 function Home(props){
     return <div>
@@ -37,6 +38,7 @@ function Home(props){
                 </Row>
             </Container>
         </div>
+        <Footer />
     </div>
 }
 
